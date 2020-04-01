@@ -21,6 +21,23 @@ public class Palindrome {
      * <p>Результат: true</p>
      */
     public boolean isPalindrome(String text) {
-        return false;
+        String reverse;
+        String wholeStr;
+        String[] tokens = text.toLowerCase()
+                .replaceAll("[,.:;()!?]", "")
+                .replaceAll("(?<=[ ])[-](?=[ ])", "")
+                .replaceAll(" {2,}", " ")
+                .trim()
+                .split(" ");
+
+        for (String str : tokens) {
+            reverse = new StringBuilder(str).reverse().toString();
+            if (str.equals(reverse)) {
+                return true;
+            }
+        }
+        wholeStr = String.join("", tokens);
+        reverse = new StringBuilder(wholeStr).reverse().toString();
+        return wholeStr.equals(reverse);
     }
 }
