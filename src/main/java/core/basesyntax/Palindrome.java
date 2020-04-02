@@ -21,18 +21,8 @@ public class Palindrome {
      * <p>Результат: true</p>
      */
     public boolean isPalindrome(String text) {
-        String[] tokens = text.toLowerCase()
-                .replaceAll("[,.:;()!?]", "")
-                .trim()
-                .split(" ");
-
-        for (String str : tokens) {
-            String reverse = new StringBuilder(str).reverse().toString();
-            if (str.equals(reverse)) {
-                return true;
-            }
-        }
-        String digits = String.join("", tokens);
-        return digits.equals(new StringBuilder(digits).reverse().toString());
+        String clean = text.toLowerCase()
+                .replaceAll("[\\W]", "");
+        return clean.equals(new StringBuilder(clean).reverse().toString());
     }
 }
